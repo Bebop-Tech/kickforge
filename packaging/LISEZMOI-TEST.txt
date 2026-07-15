@@ -1,0 +1,36 @@
+KickForge v2 — kit de test Windows
+===================================
+
+Contenu du zip :
+  - KickForge.exe        -> application autonome (aucune installation requise)
+  - KickForge.vst3\      -> plugin VST3 pour FL Studio (ou tout DAW VST3)
+  - LISEZMOI-TEST.txt    -> ce fichier
+
+1) Test rapide (sans DAW)
+-------------------------
+Double-clique sur KickForge.exe.
+Windows SmartScreen peut afficher un avertissement (binaire non signé) :
+"Informations complémentaires" puis "Exécuter quand même".
+Dans l'appli : Options (en haut à gauche) -> Audio/MIDI Settings pour choisir
+ta sortie audio, puis clique le bouton rond orange (Play) ou active Loop.
+
+2) Installation du VST3 (FL Studio)
+-----------------------------------
+Copie le DOSSIER ENTIER "KickForge.vst3" dans :
+  C:\Program Files\Common Files\VST3\
+Puis dans FL Studio : Options -> Manage plugins -> Find more plugins.
+KickForge apparaît comme instrument (il reçoit du MIDI, chaque note déclenche
+le kick).
+
+3) Quoi tester / signaler
+-------------------------
+- Les 5 presets de genre (boutons en haut) et le bouton Random.
+- Les 3 couches du kick : Attack (le click), Punch (le corps), Crunch (la
+  queue saturée) — niveaux, drives, et les mini-formes d'onde de chaque couche.
+- La reverb : elle n'affecte que attack+punch, le crunch reste sec.
+- L'export WAV (bouton Export) et la lecture en boucle (Loop + Interval).
+- Dans FL Studio : automation des paramètres, sauvegarde/rechargement du
+  projet, changement de fréquence d'échantillonnage.
+
+Tout retour est bon à prendre : sons bizarres, clics, crashs, UI illisible...
+Merci !

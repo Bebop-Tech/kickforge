@@ -26,6 +26,7 @@ using kickforge::KickVoice;
 namespace
 {
 constexpr double kSampleRate = 48000.0;
+constexpr double kPi = 3.14159265358979323846; // kPi n'est pas standard (MSVC)
 
 // Paramètres pour observer la forme d'onde brute : pitch constant, attack
 // quasi nulle, decay très long, pas de punch.
@@ -45,13 +46,13 @@ KickVoice::Parameters steadyToneParams (float freqHz, KickVoice::Waveform wave)
 double goertzelMag (const std::vector<float>& x, double freqHz, double sampleRate)
 {
     const auto n = x.size();
-    const double w     = 2.0 * M_PI * freqHz / sampleRate;
+    const double w     = 2.0 * kPi * freqHz / sampleRate;
     const double coeff = 2.0 * std::cos (w);
 
     double s1 = 0.0, s2 = 0.0;
     for (size_t i = 0; i < n; ++i)
     {
-        const double hann = 0.5 * (1.0 - std::cos (2.0 * M_PI * static_cast<double> (i)
+        const double hann = 0.5 * (1.0 - std::cos (2.0 * kPi * static_cast<double> (i)
                                                    / static_cast<double> (n - 1)));
         const double s0 = x[i] * hann + coeff * s1 - s2;
         s2 = s1;
@@ -423,7 +424,7 @@ std::vector<float> makeSine (double freqHz, float amplitude, int numSamples)
     std::vector<float> out (static_cast<size_t> (numSamples));
     for (int i = 0; i < numSamples; ++i)
         out[static_cast<size_t> (i)] =
-            amplitude * static_cast<float> (std::sin (2.0 * M_PI * freqHz * i / kSampleRate));
+            amplitude * static_cast<float> (std::sin (2.0 * kPi * freqHz * i / kSampleRate));
     return out;
 }
 
@@ -1010,9 +1011,9 @@ TEST_CASE ("le width force le sub en mono et élargit le haut", "[WidthStage]")
     for (int i = 0; i < n; ++i)
     {
         const double t = i / kSampleRate;
-        const float mid    = 0.5f * static_cast<float> (std::sin (2.0 * M_PI * 60.0 * t));
-        const float side40 = 0.3f * static_cast<float> (std::sin (2.0 * M_PI * 40.0 * t));
-        const float side1k = 0.4f * static_cast<float> (std::sin (2.0 * M_PI * 1000.0 * t));
+        const float mid    = 0.5f * static_cast<float> (std::sin (2.0 * kPi * 60.0 * t));
+        const float side40 = 0.3f * static_cast<float> (std::sin (2.0 * kPi * 40.0 * t));
+        const float side1k = 0.4f * static_cast<float> (std::sin (2.0 * kPi * 1000.0 * t));
         left[static_cast<size_t> (i)]  = mid + side40 + side1k;
         right[static_cast<size_t> (i)] = mid - side40 - side1k;
     }

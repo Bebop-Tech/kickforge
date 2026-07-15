@@ -1,6 +1,7 @@
 #include "KickEngine.h"
 
 #include <cstring>
+#include <algorithm>
 
 namespace kickforge
 {

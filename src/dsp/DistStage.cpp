@@ -1,4 +1,5 @@
 #include "DistStage.h"
+#include <algorithm>
 
 namespace kickforge
 {

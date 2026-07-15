@@ -1,5 +1,6 @@
 #include "WaveformDisplay.h"
 #include "UiScaling.h"
+#include <algorithm>
 
 namespace kickforge::ui
 {

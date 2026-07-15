@@ -15,6 +15,7 @@
 #include <array>
 #include <cmath>
 #include <vector>
+#include <algorithm>
 
 using Catch::Approx;
 using kickforge::DriveStage;

@@ -1,4 +1,5 @@
 #include "CrunchLayer.h"
+#include <algorithm>
 
 namespace kickforge
 {

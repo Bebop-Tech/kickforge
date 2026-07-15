@@ -1,6 +1,7 @@
 #include "AttackLayer.h"
 
 #include <cmath>
+#include <algorithm>
 
 namespace kickforge
 {
